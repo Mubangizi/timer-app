@@ -61,15 +61,33 @@ function updateValue(key, value){
 function startTimer(){
   buttonManager(["start", false],["pause", true],["stop", true]);
   freezInputs();
+  timerObj.timerId = setInterval( () =>{
+    timerObj.seconds--;
+    if(timerObj.seconds < 0){
+      if(timerObj.minutes == 0){
+        soundAlarm();
+        return stopTimer();
+      }
+      timerObj.seconds = 59;
+      timerObj.minutes--;
+    }
+    updateValue("minutes", timerObj.minutes);
+    updateValue("seconds", timerObj.seconds);
+  }, 1000);
 }
 
 function stopTimer(){
+  clearInterval(timerObj.timerId)
   buttonManager(["start", true],["pause", false],["stop", false]);
   unfreezInputs();
+  // reset inputs to original time
+  updateValue("minutes", $("#minutes-input").val());
+  updateValue("seconds", $("#seconds-input").val());
 }
 
 function pauseTimer(){
   buttonManager(["start", true],["pause", false],["stop", true]);
+  clearInterval(timerObj.timerId)
 }
 
 function buttonManager(...btnArray){
