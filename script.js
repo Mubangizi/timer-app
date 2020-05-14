@@ -18,3 +18,39 @@ function soundAlarm(){
     setTimeout(playSound, 1200 * i);
   }
 }
+
+function updateValue(key, value){
+  if(value < 0){
+    value = 0
+    console.log("Positive numbers only");
+  }
+  if(key == 'seconds'){
+    if(value < 10){
+      // add 0 to values less than 10
+      value = "0" + value;
+    }
+    if(value > 59){
+      value = 59;
+    }
+  }
+  // add value to html
+  $("#"+ key).html(value || 0);
+  timerObj[key] = value;
+
+  
+}
+// make detectChanges self call
+(function detectChanges(key){
+  // construct input id
+  let input = "#" + key + "-input";
+
+  $(input).change(function (){
+    updateValue(key, $(input).val())
+  })
+
+  $(input).keyup(function (){
+    updateValue(key, $(input).val())
+  })
+  return arguments.callee;
+
+})("minutes")("seconds");
