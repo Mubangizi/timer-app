@@ -7,7 +7,7 @@ let timerObj = {
 function soundAlarm(){
   // amount regulates how many times audio should play
   let amount = 3;
-  let audio =new Audio("Ding-ding-sound.mp3");
+  let audio =new Audio("public/Ding-ding-sound.mp3");
   function playSound(){
     audio.pause();
     audio.currentTime = 0;
