@@ -54,3 +54,45 @@ function updateValue(key, value){
   return arguments.callee;
 
 })("minutes")("seconds");
+
+
+// Button management
+
+function startTimer(){
+  buttonManager(["start", false],["pause", true],["stop", true]);
+  freezInputs();
+}
+
+function stopTimer(){
+  buttonManager(["start", true],["pause", false],["stop", false]);
+  unfreezInputs();
+}
+
+function pauseTimer(){
+  buttonManager(["start", true],["pause", false],["stop", true]);
+}
+
+function buttonManager(...btnArray){
+  // invertes disabled functionality on buttons
+  for(let i = 0; i < btnArray.length; i++){
+
+    let button = "#"+btnArray[i][0] + "-button";
+
+    if(btnArray[i][1]){
+      $(button).removeAttr("disabled");
+    }else{
+      $(button).attr("disabled", "disabled");
+    }
+  }
+
+}
+
+function freezInputs(){
+  $("#minutes-input").attr("disabled", "disabled");
+  $("#seconds-input").attr("disabled", "disabled");
+}
+
+function unfreezInputs(){
+  $("#minutes-input").removeAttr("disabled", "disabled");
+  $("#seconds-input").removeAttr("disabled", "disabled");
+}

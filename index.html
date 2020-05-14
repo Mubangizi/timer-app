@@ -20,9 +20,9 @@
         <input type="number" placeholder="0" id="seconds-input" max="59" min="0" step="5">
       </div>
 
-      <button type="button" id="start-button" onclick="soundAlarm();">Start</button>
-      <button type="button" id="stop-button" disabled>Stop</button>
-      <button type="button" id="pause-button" disabled>Pause</button>
+      <button type="button" id="start-button" onclick="startTimer();">Start</button>
+      <button type="button" id="pause-button" onclick="pauseTimer();" disabled>Pause</button>
+      <button type="button" id="stop-button" onclick="stopTimer();" disabled>Stop</button>
     </section>
 
     <h2><span id="minutes">0</span>: <span id="seconds">00</span></h2>
