@@ -1,9 +1,9 @@
 # Timer App
 A simple Html app that counts down time and rings when time is done
 
-### Screen Shots
+### Screenshorts
 
-![alt](public/screenshots.png)
+![App screenshort](public/screenshorts.png)
 
 ### How to run it
 
